@@ -7,15 +7,10 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-
     ports:
       - "8081:80"
-
     environment:
-      # Ustaw w Portainerze (Stack -> Environment variables):
-      # API_KEY=...
       API_KEY: "${API_KEY}"
-
     networks:
       - kiosk-network
 
