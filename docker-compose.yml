@@ -1,17 +1,21 @@
-version: '3.8'
+version: "3.8"
 
 services:
   infopoint-kiosk:
+    container_name: infopoint_kiosk
     build:
       context: .
-      # args usunięte - nie są już potrzebne przy budowaniu
-    container_name: infopoint_kiosk
+      dockerfile: Dockerfile
     restart: unless-stopped
+
     ports:
       - "8081:80"
+
     environment:
-      # Tutaj podajemy klucz API. Można go zmienić w Portainerze bez przebudowywania obrazu.
-      - API_KEY=PoTJPuT1fKV-I7rvclv6HwlWFjnXZuhC5dK-q69du8TXoVOA9nLPw23yNTTyc3YunLWNYfY_11KP-zU4_DZ8JQ==
+      # Ustaw w Portainerze (Stack -> Environment variables):
+      # API_KEY=...
+      API_KEY: "${API_KEY}"
+
     networks:
       - kiosk-network
 
