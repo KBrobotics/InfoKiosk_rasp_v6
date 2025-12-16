@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  infopoint-kiosk:
+    build:
+      context: .
+      # args usunięte - nie są już potrzebne przy budowaniu
+    container_name: infopoint_kiosk
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      # Tutaj podajemy klucz API. Można go zmienić w Portainerze bez przebudowywania obrazu.
+      - API_KEY=PoTJPuT1fKV-I7rvclv6HwlWFjnXZuhC5dK-q69du8TXoVOA9nLPw23yNTTyc3YunLWNYfY_11KP-zU4_DZ8JQ==
+    networks:
+      - kiosk-network
+
+networks:
+  kiosk-network:
+    driver: bridge
